@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql，还有一个很重要的作用，后面会讲 -->
+<mapper namespace="com.zzz.mapper.UserMapper">
+	<!--使用MyBatis实现以下功能： -->
+	 <!--  1.根据用户id查询一个用户 -->
+	 <select id="selectById" parameterType="int" resultType="com.zzz.mybatis.User">
+	    select * from user where id=#{id}<!--#{}代表占位符  -->
+	 </select>
+	 <!--  2.根据用户名称模糊查询用户列表  -->
+	 <select id="selectLike" parameterType="string" resultType="com.zzz.mybatis.User">
+	      <!--  select * from user where username LIKE #{username} -->
+	       select * from user where username LIKE #{username}
+	      <!--  select * from user where username LIKE '%${value}%' -->
+	 </select>
+	 <!--  3.添加用户 -->
+	  <insert id="insert" parameterType="com.zzz.mybatis.User">
+	       insert into user (username,sex,address) values(#{username},#{sex},#{address})
+	 </insert>
+	 <!--  4.更新用户  -->
+	   <update id="update" parameterType="com.zzz.mybatis.User">
+	         update user set username=#{username},sex=#{sex},address=#{address}
+	   </update>
+	<!--   5.删除用户 -->
+	<delete id="delete" parameterType="int">
+	    delete from user where id=#{id}
+	</delete>
+	   
+
+
+</mapper>
