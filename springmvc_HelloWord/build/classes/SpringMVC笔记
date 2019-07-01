@@ -1,0 +1,18 @@
+加入jar包，spring的 包，数据库连接池、数据库驱动、日志、el表达式等包
+
+加入springmvc.xml文件---》配置组件扫描器，处理映射器，处理适配器   视图解析器等
+
+web.xml中配置前端控制器（dispatcherServlet）
+
+编写控制器 @controller    请求映射器@requestMapping 用于映射请求的URL
+请求处理器：处理请求 返回ModelAndView对象
+
+SpringMvc运行流程：
+
+用户请求---->前端控制器（DispatcherServlet）----->处理映射器（HandlerMapping）
+                        DS    <-- --- ------- 映射请求的URL      
+                         --------->处理器适配器 （HandlerAdaPeter）
+                            处理器  Handler   <-------------
+             ----->返回ModelAndView---->DS
+             视图解析器<----
+             --->返回视图--->DS---->渲染视图（显示数据）
